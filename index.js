@@ -15,10 +15,16 @@ app.set('port', (process.env.PORT || 5000))
   .get('/getUser', function(req, res) {
       getUser(req, res);
     })
+  .post('/video', postVideo)
   .listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });
 
+function postVideo(req, response) {
+  console.log("creating a new video");
+  res.json({success:true});
+
+}
 
 function getDessert(req, response) {
     //var id = req.query.id;
