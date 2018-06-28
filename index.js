@@ -7,19 +7,15 @@ const connectionString = process.env.DATABASE_URL || 'postgres://fzakqxbwdtrbnu:
 
 const pool = new Pool({connectionString: connectionString});
 
-app.set('port', (process.env.PORT || 5000));
-app.use(express.static(__dirname + '/public'));
-
-
-app.get('/getDessert', function(req, res) {
-    getDessert(req, res);
-});
-
-app.get('/getUser', function(req, res) {
-  getUser(req, res);
-});
-
-app.listen(app.get('port'), function() {
+app.set('port', (process.env.PORT || 5000))
+  .use(express.static(__dirname + '/public'))
+  .get('/getDessert', function(req, res) {
+        getDessert(req, res);
+    })
+  .get('/getUser', function(req, res) {
+      getUser(req, res);
+    })
+  .listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });
 
