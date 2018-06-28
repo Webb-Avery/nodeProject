@@ -15,6 +15,10 @@ app.get('/getDessert', function(req, res) {
     getDessert(req, res);
 });
 
+app.get('/getUser', function(req, res) {
+  getUser(req, res);
+});
+
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });
