@@ -9,6 +9,8 @@ const pool = new Pool({connectionString: connectionString});
 
 app.set('port', (process.env.PORT || 5000))
   .use(express.static(__dirname + '/public'))
+  .use(express.json())
+  .use(express.urlencoded())
   .get('/getDessert', function(req, res) {
         getDessert(req, res);
     })
@@ -20,8 +22,11 @@ app.set('port', (process.env.PORT || 5000))
     console.log('Node app is running on port', app.get('port'));
 });
 
-function postVideo(req, response) {
+function postVideo(req, res) {
   console.log("creating a new video");
+
+  var title = req.body.title;
+
   res.json({success:true});
 
 }
