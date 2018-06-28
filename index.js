@@ -20,9 +20,8 @@ app.listen(app.get('port'), function() {
 });
 
 
-function getPerson(req, res) {
+function getPerson(req, response) {
     var id = req.query.id;
-
     getPersonFromDb(id, function(error, result) {
         if (error || result == null || result.length != 1) {
            response.status(500).json({success: false, data:error}); 
