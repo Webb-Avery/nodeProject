@@ -78,7 +78,7 @@ function getDessertFromDb(id, callback){
 function getUserFromDb(username, callback){
   console.log("Getting user from DB with username: " + username);
 
-  var sql = "SELECT id, username, password, firstname, lastname FROM users WHERE username = $1::int";
+  var sql = "SELECT id, username, password, firstname, lastname FROM users WHERE username = $1";
 
   var params = [username];
 
