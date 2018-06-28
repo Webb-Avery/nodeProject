@@ -35,6 +35,21 @@ function getDessert(req, response) {
 
 }
 
+function getUser(req, response) {
+  var username = req.query.username;
+
+  getUserFromDb(username, function(error, result) {
+      if (error || result == null || result.length != 1) {
+         response.status(500).json({success: false, data:error}); 
+      } else {
+          var person = result[0];
+          response.status(200).json(result[0]);
+      }
+
+  });
+
+}
+
 function getDessertFromDb(id, callback){
     console.log("Getting dessert from DB with id: " + id);
 
@@ -54,5 +69,26 @@ function getDessertFromDb(id, callback){
         callback(null, result.rows);
     });
     
+}
+
+function getUserFromDb(username, callback){
+  console.log("Getting user from DB with username: " + username);
+
+  var sql = "SELECT id, username, password, firstname, lastname FROM users WHERE username = $1::int";
+
+  var params = [username];
+
+  pool.query(sql, params, function(err, result){
+      if (err){
+          console.log("Error in query: ");
+          console.log(err);
+          callback(err, null);
+      }
+
+      console.log("Found result: " + JSON.stringify(result.rows));
+
+      callback(null, result.rows);
+  });
+  
 }
 
