@@ -27,7 +27,7 @@ function postVideo(req, res) {
 
   var title = req.body.title;
 
-  res.json({success:true});
+  res.json({success:true, giventitle:title});
 
 }
 
