@@ -10,7 +10,7 @@ const pool = new Pool({connectionString: connectionString});
 app.set('port', (process.env.PORT || 5000))
   .use(express.static(__dirname + '/public'))
   .use(express.json())
-  .use(express.urlencoded())
+  .use(express.urlencoded({extended:true}))
   .get('/getDessert', function(req, res) {
         getDessert(req, res);
     })
