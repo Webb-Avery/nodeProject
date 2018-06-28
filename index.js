@@ -21,7 +21,9 @@ app.listen(app.get('port'), function() {
 
 
 function getDessert(req, response) {
-    getPersonFromDb(function(error, result) {
+    //var id = req.query.id;
+    var id = 1;
+    getDessertFromDb(id, function(error, result) {
         if (error || result == null || result.length != 1) {
            response.status(500).json({success: false, data:error}); 
         } else {
@@ -33,13 +35,14 @@ function getDessert(req, response) {
 
 }
 
-function getPersonFromDb(callback){
-    console.log("Getting desserts from database");
+function getDessertFromDb(id, callback){
+    console.log("Getting dessert from DB with id: " + id);
 
-    var sql = "SELECT * FROM dessert";
+    var sql = "SELECT id, name, description FROM dessert WHERE id = $1::int";
 
+    var params = [id];
 
-    pool.query(sql, function(err, result){
+    pool.query(sql, params, function(err, result){
         if (err){
             console.log("Error in query: ");
             console.log(err);
