@@ -14,20 +14,25 @@ app.set('port', (process.env.PORT || 5000))
   .get('/getDessert', function(req, res) {
         getDessert(req, res);
     })
-  .get('/getUser', function(req, res) {
+  .get('/login', function(req, res) {
       getUser(req, res);
     })
-  .post('/video', postVideo)
+  .post('/addUser', addUser)
   .listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });
 
-function postVideo(req, res) {
-  console.log("creating a new video");
+function addUser(req, res) {
+  console.log("creating a new user");
 
-  var title = req.body.title;
+  var firstname = req.body.firstname;
+  var lastname = req.body.lastname;
+  var username = req.body.username;
+  var password = req.body.password;
+  var passwordConfirm = req.body.passwordConfirm;
 
-  res.json({success:true, giventitle:title});
+
+  res.json({success:true, first: firstname, lastname: lastname, user: username, password:password});
 
 }
 
