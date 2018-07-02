@@ -157,17 +157,14 @@ function addUserToDb(req, callback){
 function addDessert(req, res) {
     console.log("creating a new user");
   
-    var firstname = req.body.firstname;
-    var lastname = req.body.lastname;
-    var username = req.body.username;
-    var password = req.body.password;
-    var passwordConfirm = req.body.passwordConfirm;
-  
+    var name = req.body.name;
+    var description = req.body.description;
+
     addDessertToDb(req, function(error) {
       if (error) {
          res.status(500).json({success: false}); 
       } else {
-          res.status(200).json({success:true, first: firstname, lastname: lastname, user: username, password:password});
+          res.status(200).json({success:true, Name: name, Description: description});
   
       }
   
@@ -178,16 +175,12 @@ function addDessert(req, res) {
 function addDessertToDb(req, callback){
     console.log("Getting dessert from DB");
 
-    var firstname = req.body.firstname;
-    var lastname = req.body.lastname;
-    var username = req.body.username;
-    var password = req.body.password;
-    var passwordConfirm = req.body.passwordConfirm;
+    var name = req.body.name;
+    var description = req.body.description;
 
-    
-    var sql = "INSERT INTO users(username, password, firstname, lastname) VALUES($1, $2, $3, $4)";
+    var sql = "INSERT INTO dessert(name, description) VALUES($1, $2)";
   
-    var params = [username, password, firstname, lastname];
+    var params = [name, description];
   
     pool.query(sql, params, function(err, result){
         if (err){
@@ -196,7 +189,7 @@ function addDessertToDb(req, callback){
             callback(err, null);
         }
   
-        console.log("User Added.");
+        console.log("Dessert Added.");
   
         callback(null);
     });
