@@ -14,7 +14,7 @@ app.set('port', (process.env.PORT || 5000))
   .get('/getDessert', function(req, res) {
         getDessert(req, res);
     })
-  .get('/login', function(req, res) {
+  .post('/login', function(req, res) {
       getUser(req, res);
     })
   .get('/addDessert', function(req, res) {
@@ -32,26 +32,7 @@ app.set('port', (process.env.PORT || 5000))
     console.log('Node app is running on port', app.get('port'));
 });
 
-function addUser(req, res) {
-  console.log("creating a new user");
 
-  var firstname = req.body.firstname;
-  var lastname = req.body.lastname;
-  var username = req.body.username;
-  var password = req.body.password;
-  var passwordConfirm = req.body.passwordConfirm;
-
-  addUserToDb(req, function(error) {
-    if (error) {
-       res.status(500).json({success: false}); 
-    } else {
-        res.status(200).json({success:true, first: firstname, lastname: lastname, user: username, password:password});
-
-    }
-
-    });
-  
-}
 
 function getDessert(req, response) {
     var id = req.query.id;
@@ -67,20 +48,7 @@ function getDessert(req, response) {
 
 }
 
-function getUser(req, response) {
-  var username = req.query.username;
 
-  getUserFromDb(username, function(error, result) {
-      if (error || result == null || result.length != 1) {
-         response.status(500).json({success: false, data:error}); 
-      } else {
-          var person = result[0];
-          response.status(200).json(result[0]);
-      }
-
-  });
-
-}
 
 function getDessertFromDb(id, callback){
     console.log("Getting dessert from DB with id: " + id);
@@ -103,8 +71,25 @@ function getDessertFromDb(id, callback){
     
 }
 
-function getUserFromDb(username, callback){
+function getUser(req, response) {
+  
+    getUserFromDb(req, password, function(error, result) {
+        if (error || result == null || result.length != 1) {
+           response.status(500).json({success: false, data:error}); 
+        } else {
+            var person = result[0];
+            response.status(200).json(result[0]);
+        }
+  
+    });
+  
+}
+
+function getUserFromDb(req, callback){
   console.log("Getting user from DB with username: " + username);
+
+  var username = req.body.username;
+  var password = req.body.password;
 
   var sql = "SELECT id, username, password, firstname, lastname FROM users WHERE username = $1";
 
@@ -124,6 +109,26 @@ function getUserFromDb(username, callback){
   
 }
 
+function addUser(req, res) {
+    console.log("creating a new user");
+  
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+    var username = req.body.username;
+    var password = req.body.password;
+    var passwordConfirm = req.body.passwordConfirm;
+  
+    addUserToDb(req, function(error) {
+      if (error) {
+         res.status(500).json({success: false}); 
+      } else {
+          res.status(200).json({success:true, first: firstname, lastname: lastname, user: username, password:password});
+  
+      }
+  
+      });
+    
+}
 
 function addUserToDb(req, callback){
     console.log("Getting user from DB with username: " + username);
