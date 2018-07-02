@@ -73,12 +73,18 @@ function getDessertFromDb(id, callback){
 
 function getUser(req, response) {
   
+    var password = req.body.password;
+
     getUserFromDb(req, function(error, result) {
         if (error || result == null || result.length != 1) {
            response.status(500).json({success: false, data:error}); 
         } else {
             var person = result[0];
-            response.status(200).json(result[0]);
+
+            if(result.password == password)
+                response.status(200).json(result[0]);
+            else    
+                response.status(200).json("message: Username/password incorrect.");    
         }
   
     });
