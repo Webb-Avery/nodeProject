@@ -17,6 +17,16 @@ app.set('port', (process.env.PORT || 5000))
   .get('/login', function(req, res) {
       getUser(req, res);
     })
+  .get('/addDessert', function(req, res) {
+      //!!!!
+      addDessert(req, res);
+    })
+  .get('/addComment', function(req, res) {
+      addComment(req, res);
+    })
+   .get('/getComment', function(req, res) {
+      getUser(req, res);
+    })  
   .post('/addUser', addUser)
   .listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
@@ -37,8 +47,7 @@ function addUser(req, res) {
 }
 
 function getDessert(req, response) {
-    //var id = req.query.id;
-    var id = 1;
+    var id = req.query.id;
     getDessertFromDb(id, function(error, result) {
         if (error || result == null || result.length != 1) {
            response.status(500).json({success: false, data:error}); 
@@ -69,9 +78,9 @@ function getUser(req, response) {
 function getDessertFromDb(id, callback){
     console.log("Getting dessert from DB with id: " + id);
 
-    var sql = "SELECT id, name, description FROM dessert WHERE id = $1::int";
+    var sql = "SELECT id, name, description FROM dessert";
 
-    var params = [id];
+//    var params = [id]; WHERE id = $1::int
 
     pool.query(sql, params, function(err, result){
         if (err){
