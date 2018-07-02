@@ -73,7 +73,7 @@ function getDessertFromDb(id, callback){
 
 function getUser(req, response) {
   
-    getUserFromDb(req, password, function(error, result) {
+    getUserFromDb(req, function(error, result) {
         if (error || result == null || result.length != 1) {
            response.status(500).json({success: false, data:error}); 
         } else {
