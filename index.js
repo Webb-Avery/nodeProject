@@ -41,9 +41,16 @@ function addUser(req, res) {
   var password = req.body.password;
   var passwordConfirm = req.body.passwordConfirm;
 
+  addUserToDb(req, function(error, result) {
+    if (error || result == null || result.length != 1) {
+       res.status(500).json({success: false, data:error}); 
+    } else {
+        res.status(200).json({success:true, first: firstname, lastname: lastname, user: username, password:password});
 
-  res.json({success:true, first: firstname, lastname: lastname, user: username, password:password});
+    }
 
+    });
+  
 }
 
 function getDessert(req, response) {
@@ -78,11 +85,11 @@ function getUser(req, response) {
 function getDessertFromDb(id, callback){
     console.log("Getting dessert from DB with id: " + id);
 
-    var sql = "SELECT id, name, description FROM dessert";
+    var sql = "SELECT id, name, description FROM dessert WHERE id = $1::int";
 
-  var params = [id]; WHERE id = $1::int
+    var params = [id];
 
-    pool.query(sql, function(err, result){
+    pool.query(sql, params, function(err, result){
         if (err){
             console.log("Error in query: ");
             console.log(err);
@@ -117,3 +124,31 @@ function getUserFromDb(username, callback){
   
 }
 
+
+function addUserToDb(req, callback){
+    console.log("Getting user from DB with username: " + username);
+
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+    var username = req.body.username;
+    var password = req.body.password;
+    var passwordConfirm = req.body.passwordConfirm;
+
+    
+    var sql = "INSERT INTO users(username, password, firstname, lastname) VALUES($1, $2, $3, $4)";
+  
+    var params = [username, password, firstname, lastname];
+  
+    pool.query(sql, params, function(err, result){
+        if (err){
+            console.log("Error in query: ");
+            console.log(err);
+            callback(err, null);
+        }
+  
+        console.log("User Added.");
+  
+        callback(null, result);
+    });
+    
+}  
