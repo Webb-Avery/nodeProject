@@ -86,7 +86,7 @@ function getComment(req, response) {
 function getCommentFromDb(id, callback){
     console.log("Getting comment from DB with id: " + id);
 
-    var sql = "SELECT name, rating, comment, dessertid, id FROM comment WHERE id = $1::int";
+    var sql = "SELECT name, rating, comment, dessertid, id FROM comment WHERE dessertid = $1::int";
 
     var params = [id];
 
@@ -239,7 +239,7 @@ function addComment(req, res) {
     var name = req.body.name;
     var rating = req.body.rating;
     var comment = req.body.comment;
-    var dessertName = req.body.dessertName;
+    var dessertId = req.body.dessertId;
 
     addCommentToDb(req, function(error) {
       if (error) {
@@ -259,8 +259,7 @@ function addCommentToDb(req, callback){
     var name = req.body.name;
     var rating = req.body.rating;
     var comment = req.body.comment;
-    var dessertName = req.body.dessertName;
-    var dessertId = '2';
+    var dessertId = req.body.dessertId;
 
     var sql = "INSERT INTO comment(name, rating, comment, dessertid) VALUES($1, $2, $3, $4)";
   
