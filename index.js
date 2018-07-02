@@ -18,9 +18,7 @@ app.set('port', (process.env.PORT || 5000))
       getUser(req, res);
     })
   .post('/addDessert', addDessert)
-  .get('/addComment', function(req, res) {
-      addComment(req, res);
-    })
+  .post('/addComment', addComment)
    .get('/getComment', function(req, res) {
       getUser(req, res);
     })  
@@ -190,6 +188,54 @@ function addDessertToDb(req, callback){
         }
   
         console.log("Dessert Added.");
+  
+        callback(null);
+    });
+    
+}  
+
+
+function addComment(req, res) {
+    console.log("creating a new user");
+  
+    var name = req.body.name;
+    var rating = req.body.rating;
+    var comment = req.body.comment;
+    var dessertName = req.body.dessertName;
+
+    addCommentToDb(req, function(error) {
+      if (error) {
+         res.status(500).json({success: false}); 
+      } else {
+          res.status(200).json({success:true, Name: name, Rating:rating, Comment:comment});
+  
+      }
+  
+      });
+    
+}
+
+function addCommentToDb(req, callback){
+    console.log("Getting dessert from DB");
+
+    var name = req.body.name;
+    var rating = req.body.rating;
+    var comment = req.body.comment;
+    var dessertName = req.body.dessertName;
+    var dessertId = '2';
+
+    var sql = "INSERT INTO comment(name, rating, comment, dessertid) VALUES($1, $2, $3, $4)";
+  
+    var params = [name, rating, comment, dessertId];
+  
+    pool.query(sql, params, function(err, result){
+        if (err){
+            console.log("Error in query: ");
+            console.log(err);
+            callback(err, null);
+        }
+  
+        console.log("Comment Added.");
   
         callback(null);
     });
