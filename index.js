@@ -80,9 +80,9 @@ function getDessertFromDb(id, callback){
 
     var sql = "SELECT id, name, description FROM dessert";
 
-//    var params = [id]; WHERE id = $1::int
+  var params = [id]; WHERE id = $1::int
 
-    pool.query(sql, params, function(err, result){
+    pool.query(sql, function(err, result){
         if (err){
             console.log("Error in query: ");
             console.log(err);
