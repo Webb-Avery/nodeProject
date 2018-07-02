@@ -107,7 +107,7 @@ function getUserFromDb(req, callback){
           console.log(err);
           callback(err, null);
       }
-
+      console.log(result.password); 
       console.log("Found result: " + JSON.stringify(result.rows));
 
       callback(null, result.rows);
