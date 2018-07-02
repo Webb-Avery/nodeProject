@@ -17,17 +17,14 @@ app.set('port', (process.env.PORT || 5000))
   .post('/login', function(req, res) {
       getUser(req, res);
     })
-  .get('/addDessert', function(req, res) {
-      //!!!!
-      addDessert(req, res);
-    })
+  .post('/addDessert', addDessert(req, res))
   .get('/addComment', function(req, res) {
       addComment(req, res);
     })
    .get('/getComment', function(req, res) {
       getUser(req, res);
     })  
-  .post('/addUser', addUser)
+  .post('/addUser', addUser(req, res))
   .listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });
@@ -133,6 +130,55 @@ function addUser(req, res) {
 
 function addUserToDb(req, callback){
     console.log("Getting user from DB with username: " + username);
+
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+    var username = req.body.username;
+    var password = req.body.password;
+    var passwordConfirm = req.body.passwordConfirm;
+
+    
+    var sql = "INSERT INTO users(username, password, firstname, lastname) VALUES($1, $2, $3, $4)";
+  
+    var params = [username, password, firstname, lastname];
+  
+    pool.query(sql, params, function(err, result){
+        if (err){
+            console.log("Error in query: ");
+            console.log(err);
+            callback(err, null);
+        }
+  
+        console.log("User Added.");
+  
+        callback(null);
+    });
+    
+}  
+
+function addDessert(req, res) {
+    console.log("creating a new user");
+  
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+    var username = req.body.username;
+    var password = req.body.password;
+    var passwordConfirm = req.body.passwordConfirm;
+  
+    addDessertToDb(req, function(error) {
+      if (error) {
+         res.status(500).json({success: false}); 
+      } else {
+          res.status(200).json({success:true, first: firstname, lastname: lastname, user: username, password:password});
+  
+      }
+  
+      });
+    
+}
+
+function addDessertToDb(req, callback){
+    console.log("Getting dessert from DB");
 
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
