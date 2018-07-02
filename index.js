@@ -84,7 +84,7 @@ function getUser(req, response) {
             if(result.password == password)
                 response.status(200).json(result[0]);
             else    
-                response.status(200).json("message: Username/password incorrect.");    
+                response.status(200).json("message: Username/password incorrect." + result.passward + password);    
         }
   
     });
