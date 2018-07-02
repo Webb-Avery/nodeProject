@@ -70,11 +70,9 @@ function getDessertFromDb(id, callback){
 
 function getUser(req, response) {
   
-    var password = req.body.password;
-
     getUserFromDb(req, function(error, result) {
         if (error || result == null || result.length != 1) {
-           response.status(500).json({success: false, data:error}); 
+           response.status(500).json({success: false, message:'Username/Password incorrect'}); 
         } else {
             var person = result[0];
             response.status(200).json(result[0]);    
@@ -90,9 +88,9 @@ function getUserFromDb(req, callback){
   var username = req.body.username;
   var password = req.body.password;
 
-  var sql = "SELECT id, username, password, firstname, lastname FROM users WHERE username = $1";
+  var sql = "SELECT id, username, password, firstname, lastname FROM users WHERE username = $1 and password = $2";
 
-  var params = [username];
+  var params = [username, password];
 
   pool.query(sql, params, function(err, result){
       if (err){
