@@ -17,14 +17,14 @@ app.set('port', (process.env.PORT || 5000))
   .post('/login', function(req, res) {
       getUser(req, res);
     })
-  .post('/addDessert', addDessert(req, res))
+  .post('/addDessert', addDessert)
   .get('/addComment', function(req, res) {
       addComment(req, res);
     })
    .get('/getComment', function(req, res) {
       getUser(req, res);
     })  
-  .post('/addUser', addUser(req, res))
+  .post('/addUser', addUser)
   .listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });
