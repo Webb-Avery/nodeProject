@@ -41,9 +41,9 @@ function addUser(req, res) {
   var password = req.body.password;
   var passwordConfirm = req.body.passwordConfirm;
 
-  addUserToDb(req, function(error, result) {
-    if (error || result == null || result.length != 1) {
-       res.status(500).json({success: false, data:error}); 
+  addUserToDb(req, function(error) {
+    if (error) {
+       res.status(500).json({success: false}); 
     } else {
         res.status(200).json({success:true, first: firstname, lastname: lastname, user: username, password:password});
 
@@ -148,7 +148,7 @@ function addUserToDb(req, callback){
   
         console.log("User Added.");
   
-        callback(null, result);
+        callback(null);
     });
     
 }  
