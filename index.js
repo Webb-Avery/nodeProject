@@ -80,11 +80,7 @@ function getUser(req, response) {
            response.status(500).json({success: false, data:error}); 
         } else {
             var person = result[0];
-
-            if(result.password == password)
-                response.status(200).json(result[0]);
-            else    
-                response.status(200).json("message: Username/password incorrect." + result.passward + password);    
+            response.status(200).json(result[0]);    
         }
   
     });
@@ -107,7 +103,6 @@ function getUserFromDb(req, callback){
           console.log(err);
           callback(err, null);
       }
-      console.log(result.password); 
       console.log("Found result: " + JSON.stringify(result.rows));
 
       callback(null, result.rows);
