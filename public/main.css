@@ -44,32 +44,7 @@ p.def {
   width: 100%;
 }
 
-div.rb_photo {
-	width: 10%;
-	margin: 1% 0 1% 35%;
-	float: left;
-	clear: both;
-}
-
-div.row {
-	/*width: 100%;*/
-	/*background-color: #5b3a3a;
-	border: 4px solid #c3a2a2; 
-	border-radius: 13px; 
-	padding: .8%;
-	margin: 3% 25%;*/
-}
-
-div.rb_item {
-	width: 15%;
-	margin: 3% 35% 3% 0;
-	float: right;
-	background-color: #5b3a3a;
-	border: 4px solid #c3a2a2; 
-	border-radius: 13px; 
-	padding: .8%;	  
-}
-
+\
 
 
 
@@ -122,11 +97,7 @@ div.infoDiv {
   background: yellow;*/
 }
 
-.hidden1 {
-	display: none;
-  text-align: center;
-  color: red;
-}
+
 
 #loaded_rb {
 	white-space: pre-line;
@@ -364,7 +335,6 @@ button.btnRemove {
 /* The Modal (background) */
 .modal {
 	font-family: Verdana;
-    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
