@@ -5,7 +5,7 @@ body {
 
 form {
   border: 3px solid #f1f1f1;
-  padding: 5%;
+  padding: 3% 20%;
 }
 
 input[type=text], input[type=password] {
@@ -33,4 +33,5 @@ input[type=text], input[type=password] {
 
 .container {
     padding: 16px;
+    width:60%;
 }
