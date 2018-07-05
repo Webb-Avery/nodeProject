@@ -37,6 +37,5 @@ body {
 label, input { 
 	display:block; 
 	margin-bottom:12px; 
-	width:95%; 
-  padding: .4em; 
+	width:95%;  
 }
