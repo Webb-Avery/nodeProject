@@ -38,5 +38,6 @@ label, input {
 	display:block; 
 	margin-bottom:12px; 
 	width:95%; 
-  padding-left: 12px; 
+  padding-left: 12px;
+  margin-left: 12px; 
 }
