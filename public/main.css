@@ -19,7 +19,7 @@ body {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color:antiquewhite;
+    background-color:cornflowerblue;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     width: 40%; /* Could be more or less, depending on screen size */
     padding-left: 10%;
