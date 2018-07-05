@@ -22,9 +22,8 @@ body {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    background-color: cyan;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
     width: 40%; /* Could be more or less, depending on screen size */
 }
 
@@ -44,6 +43,12 @@ body {
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
-  cursor: pointer;
   width: 100%;
+}
+
+label, input { 
+	display:block; 
+	margin-bottom:12px; 
+	width:95%; 
+	padding: .4em; 
 }
