@@ -21,7 +21,7 @@ body {
 .modal-content {
     background-color:cornflowerblue;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    width: 40%; /* Could be more or less, depending on screen size */
+    width: 60%; /* Could be more or less, depending on screen size */
 
 }
 
@@ -34,10 +34,9 @@ body {
   width: 100%;
 }
 
-label, input { 
+label, .input { 
 	display:block; 
 	margin-bottom:12px; 
-	width:95%; 
-  padding-left: 12px;
-  margin-left: 12px; 
+  width:95%;
+  
 }
