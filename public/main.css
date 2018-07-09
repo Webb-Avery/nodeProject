@@ -3,7 +3,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-form {
+.box {
   border: 3px solid #f1f1f1;
   padding: 3% 20%;
 }
