@@ -11,24 +11,23 @@
 
                 }
             };
-            httpRequest.open("GET", '/dessert'+ title  , true);
+            httpRequest.open("GET", '/getDessert?id='+ id, true);
             httpRequest.send();
-            console.log("searching for:" + title);
+            console.log("Getting id:" + id);
         }
         function addResults(json) {
             console.log(json);
 
             var result = document.getElementById('results');
-            result.innerHTML = "";
-            for(var i = 0; i < json.Search.length; i++){
-                var newItem = document.createElement('li');
-                var text = document.createTextNode('');
-                newItem.appendChild(text);
-                newItem.innerHTML = "<button onclick='getDetails(\"" + json.Search[i].imdbID + "\")'>View Details!</button> " + json.Search[i].Title; 
-                result.appendChild(newItem);
-
-            }
+            var newItem = document.createElement('p');
+            var text = document.createTextNode('');
             
+            newItem.appendChild(text);
+    
+            newItem.innerHTML = "Name: " + json.name + "<br>" 
+                  + "Description: " + json.description + "<br>";
+                  //+ "Poster: <img src='" + json.Poster + "' ><br>"; 
+             result.appendChild(newItem);
         }
 
         function getDetails(id){
@@ -63,6 +62,7 @@
 </head>
 <body>
     <h1>Desserts</h1>
-    <ul id="results"></ul>
+    <p id="results"></p>
+    <button onclick="addDessert(1)">add</button>
 </body>
 </html>
