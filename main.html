@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function searchTitle() {
+            var httpRequest = new XMLHttpRequest();
+            var title = document.getElementById("search").value;
+            httpRequest.onreadystatechange = function() {
+                if(this.readyState === 4 && this.status === 200) {
+                    var newObj = JSON.parse(httpRequest.responseText);
+                    addResults(newObj);
+
+                }
+            };
+            httpRequest.open("GET", 'http://www.omdbapi.com/?apikey=6456d685&s='+ title  , true);
+            httpRequest.send();
+            console.log("searching for:" + title);
+        }
+        function addResults(json) {
+            console.log(json);
+
+            var result = document.getElementById('results');
+            result.innerHTML = "";
+            for(var i = 0; i < json.Search.length; i++){
+                var newItem = document.createElement('li');
+                var text = document.createTextNode('');
+                newItem.appendChild(text);
+                newItem.innerHTML = "<button onclick='getDetails(\"" + json.Search[i].imdbID + "\")'>View Details!</button> " + json.Search[i].Title; 
+                result.appendChild(newItem);
+
+            }
+            
+        }
+
+        function getDetails(id){
+            var httpRequest = new XMLHttpRequest();
+        
+            httpRequest.onreadystatechange = function() {
+                if(this.readyState === 4 && this.status === 200) {
+                    var newObj = JSON.parse(httpRequest.responseText);
+                    displayDetails(newObj);
+
+                }
+            };
+            httpRequest.open("GET", 'http://www.omdbapi.com/?apikey=6456d685&i='+ id  , true);
+            httpRequest.send();
+            console.log("searching for:" + id);
+        }
+
+        function displayDetails(json){
+            console.log(json);
+            var details = document.getElementById("details");
+
+
+            details.innerHTML = "Title: " + json.Title + "<br>" 
+                              + "Genre: " + json.Genre + "<br>"
+                              + "Released: " + json.Released + "<br>"
+                              + "Rated: " + json.Rated + "<br>"
+                              + "Poster: <img src='" + json.Poster + "' ><br>"; 
+
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Desserts</h1>
+    <ul id="results"></ul>
+</body>
+</html>
