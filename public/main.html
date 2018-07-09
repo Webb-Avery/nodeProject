@@ -3,7 +3,7 @@
 <head>
     <script>
         function inputDesserts() {
-            for (var i = 0; i< 5; i++){
+            for (var i = 1; i< 5; i++){
                 addDessert(i);
             }
         }
@@ -30,8 +30,9 @@
             
             newItem.appendChild(text);
     
-            newItem.innerHTML = "Name: " + json.name + "<br>" 
-                  + "Description: " + json.description + "<br>";
+            newItem.innerHTML = json.name + "<br>" 
+                  + "Description: " + json.description + "<br>"
+                  + "<button onclick='getDetails(\"" + json.Search[i].imdbID + "\")'>Add Comment</button> "; 
                   //+ "Poster: <img src='" + json.Poster + "' ><br>"; 
              result.appendChild(newItem);
         }
