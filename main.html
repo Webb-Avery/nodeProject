@@ -2,9 +2,8 @@
 <html>
 <head>
     <script>
-        function searchTitle() {
+        function addDessert(id) {
             var httpRequest = new XMLHttpRequest();
-            var title = document.getElementById("search").value;
             httpRequest.onreadystatechange = function() {
                 if(this.readyState === 4 && this.status === 200) {
                     var newObj = JSON.parse(httpRequest.responseText);
@@ -12,7 +11,7 @@
 
                 }
             };
-            httpRequest.open("GET", 'http://www.omdbapi.com/?apikey=6456d685&s='+ title  , true);
+            httpRequest.open("GET", '/dessert'+ title  , true);
             httpRequest.send();
             console.log("searching for:" + title);
         }
