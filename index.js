@@ -14,7 +14,7 @@ app.set('port', (process.env.PORT || 5000))
   .get('/getDessert', function(req, res) {
         getDessert(req, res);
     })
-  .post('/login', function(req, res) {
+  .get('/login', function(req, res) {
       getUser(req, res);
     })
   .post('/addDessert', addDessert)
@@ -121,8 +121,8 @@ function getUser(req, response) {
 function getUserFromDb(req, callback){
   console.log("Getting user from DB with username: " + username);
 
-  var username = req.body.username;
-  var password = req.body.password;
+  var username = req.query.username;
+  var password = req.query.password;
 
   var sql = "SELECT id, username, password, firstname, lastname FROM users WHERE username = $1 and password = $2";
 
