@@ -2,6 +2,12 @@
 <html>
 <head>
     <script>
+        function inputDesserts() {
+            for (var i = 0; i< 5; i++){
+                addDessert(i);
+            }
+        }
+
         function addDessert(id) {
             var httpRequest = new XMLHttpRequest();
             httpRequest.onreadystatechange = function() {
@@ -60,9 +66,11 @@
 
     </script>
 </head>
-<body onload="addDessert(1)">
+<body onload="inputDesserts()">
     <h1>Desserts</h1>
     <p id="results"></p>
-    <button onclick="addDessert(1)">add</button>
+
+
+
 </body>
 </html>
