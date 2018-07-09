@@ -12,7 +12,7 @@
     httpRequest.onreadystatechange = function() {
         if(this.readyState === 4 && this.status === 200) {
             var newObj = JSON.parse(httpRequest.responseText);
-            addResults(newObj);
+            checkResults(newObj);
         }
     };
         httpRequest.open("GET", 'login/?username=' + username + '&password='+ password  , true);
@@ -20,12 +20,14 @@
         console.log("login: " + username);
     }
   
-    function addResults(json) {
+    function checkResults(json) {
         console.log(json);
 
-        var result = document.getElementById('results');
-        result.innerHTML = "";
-       for(var i = 0; i < json.length; i++){
+        if(json.success == 'false'){
+            console.log("error");
+        }
+        
+       /*for(var i = 0; i < json.length; i++){
             var newItem = document.createElement('li');
             var text = document.createTextNode('');
             newItem.appendChild(text);
@@ -33,7 +35,7 @@
             result.appendChild(newItem);
 
         }
-            
+         */   
     }    
 </script>    
 <title>Login</title>
@@ -44,7 +46,6 @@
     </header>
     <body>
 <br>
-<div id="results"> </div>
 <div class="container">  
    <div class="box">
     <form>
