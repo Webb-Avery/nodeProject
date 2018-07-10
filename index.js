@@ -20,6 +20,7 @@ app.set('port', (process.env.PORT || 5000))
   .post('/addDessert', addDessert)
   .post('/addComment', addComment)
    .get('/getComment', function(req, res) {
+       console.log("Test");
       getComment(req, res);
     })  
   .post('/addUser', addUser)
@@ -69,7 +70,7 @@ function getDessertFromDb(id, callback){
 
 function getComment(req, response) {
     console.log("test");
-    var id = req.query.dessertid;
+    var id = req.query.id;
     getCommentFromDb(id, function(error, result) {
         if (error || result == null || result.length != 1) {
            response.status(500).json({success: false, data:error}); 
