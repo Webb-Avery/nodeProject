@@ -236,9 +236,7 @@ function addDessertToDb(req, callback){
 function addComment(req, res) {
     console.log("creating a new user");
 
-    res.writeHead(302, {
-        'Location' : '/main.html'
-      });
+   
   
     var name = req.body.name;
     var rating = req.body.rating;
@@ -255,6 +253,9 @@ function addComment(req, res) {
   
       });
     
+      res.writeHead(302, {
+        'Location' : '/main.html'
+      });
 }
 
 function addCommentToDb(req, callback){
