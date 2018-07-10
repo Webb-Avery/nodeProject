@@ -34,7 +34,7 @@
             newItem.appendChild(text);
     
             newItem.innerHTML = "<div class='container'> <div class='box'><h2>" + json.name + "</h2><br>" 
-                  + "Description: " + json.description + "<br><p id='comments" + id +"'></p>"
+                  + "Description: " + json.description + "<br><p id='comments'></p>"
                   + "<button class='submit' onclick='getDetails'>Add Comment</button> </div></div>"; 
                   //+ <img src='" + json.image + "' ><br>"; 
              result.appendChild(newItem);
@@ -57,7 +57,7 @@
 
         function displayComments(json, id){
             console.log(json);
-            var details = document.getElementById("comments1");
+            var details = document.getElementById("details");
 
 
             details.innerHTML +=  json;
