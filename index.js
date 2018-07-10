@@ -256,6 +256,7 @@ function addComment(req, res) {
       res.writeHead(302, {
         'Location' : '/main.html'
       });
+      res.end();
 }
 
 function addCommentToDb(req, callback){
