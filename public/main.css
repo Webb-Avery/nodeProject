@@ -3,6 +3,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+h1 {
+    text-align: center;
+}
 .box {
   border: 3px solid #f1f1f1;
   padding: 3% 20%;
