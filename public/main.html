@@ -34,7 +34,7 @@
             newItem.appendChild(text);
     
             newItem.innerHTML = "<div class='container'> <div class='box'><h2>" + json.name + "</h2><br>" 
-                  + "Description: " + json.description + "<br><p id='comments'></p>"
+                  + "Description: " + json.description + "<br><p id='comments" + id + "'></p>"
                   + "<button class='submit' onclick='getDetails'>Add Comment</button> </div></div>"; 
                   //+ <img src='" + json.image + "' ><br>"; 
              result.appendChild(newItem);
@@ -61,9 +61,9 @@
 
             for(var i= 0; i < json.length; i++)
             {
-                details.innerHTML +=  "<h2>" + json[i].name + "</h2>" 
+                details.innerHTML +=  "<h3>" + json[i].name + "</h3>" 
                  + "<p>" + json[i].rating + " stars <br>" 
-                 + "<br>" + json[i].comment + "<br><br>";
+                 + "<br>" + json[i].comment + "</p><br>";
             }
           
 
