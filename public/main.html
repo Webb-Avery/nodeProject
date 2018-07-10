@@ -16,7 +16,7 @@
             httpRequest.onreadystatechange = function() {
                 if(this.readyState === 4 && this.status === 200) {
                     var newObj = JSON.parse(httpRequest.responseText);
-                    addResults(newObj);
+                    addResults(newObj, id);
 
                 }
             };
@@ -24,7 +24,7 @@
             httpRequest.send();
             console.log("Getting id:" + id);
         }
-        function addResults(json) {
+        function addResults(json, id) {
             console.log(json);
 
             var result = document.getElementById('results');
