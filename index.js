@@ -68,7 +68,7 @@ function getDessertFromDb(id, callback){
 
 
 function getComment(req, response) {
-    var id = req.query.id;
+    var id = req.query.dessertid;
     getCommentFromDb(id, function(error, result) {
         if (error || result == null || result.length != 1) {
            response.status(500).json({success: false, data:error}); 
