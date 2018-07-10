@@ -59,8 +59,13 @@
             console.log(json);
             var details = document.getElementById("details");
 
-
-            details.innerHTML +=  json.length;
+            for(var i= 0; i < json.length; i++)
+            {
+                details.innerHTML +=  "<h2>" + json.name + "</h2>" 
+                 + "<p>" + json.rating + " stars <br>" + json.displayComments
+                 + "<br>" + json.comment + "<br><br>";
+            }
+          
 
         }
 
