@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script>
         function inputDesserts() {
-            for (var i = 1; i< 5; i++){
+            for (var i = 2; i< 5; i++){
                 addDessert(i);
             }
         }
@@ -49,9 +49,9 @@
 
                 }
             };
-            httpRequest.open("GET", 'http://www.omdbapi.com/?apikey=6456d685&i='+ id  , true);
+            httpRequest.open("GET", 'https://dry-platea/getComment?id='+ id  , true);
             httpRequest.send();
-            console.log("searching for:" + id);
+            console.log("Comment for:" + id);
         }
 
         function displayDetails(json){
@@ -59,11 +59,7 @@
             var details = document.getElementById("details");
 
 
-            details.innerHTML = "Title: " + json.Title + "<br>" 
-                              + "Genre: " + json.Genre + "<br>"
-                              + "Released: " + json.Released + "<br>"
-                              + "Rated: " + json.Rated + "<br>"
-                              + "Poster: <img src='" + json.Poster + "' ><br>"; 
+            details.innerHTML =  
 
         }
 

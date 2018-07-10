@@ -22,20 +22,8 @@
   
     function checkResults(json) {
         console.log(json);
-
-        if(json.success == 'false'){
-            console.log("error");
-        }
         
-       /*for(var i = 0; i < json.length; i++){
-            var newItem = document.createElement('li');
-            var text = document.createTextNode('');
-            newItem.appendChild(text);
-            newItem.innerHTML = json[i]; 
-            result.appendChild(newItem);
-
-        }
-         */   
+        
     }    
 </script>    
 <title>Login</title>
@@ -66,7 +54,7 @@
 </div>
 <br /> <br>
     <div class="container">
-        <form method="post" action="/addUser">
+        <form class="box" method="post" action="/addUser">
             <div>
             <h2> Sign Up! </h2>
     
