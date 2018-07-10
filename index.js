@@ -21,9 +21,7 @@ app.set('port', (process.env.PORT || 5000))
   .post('/addComment', addComment)
    .get('/getComment', function(req, res) {
       getComment(req, res);
-      res.writeHead(302, {
-        'Location' : '/main.html'
-      });
+
     })  
   .post('/addUser', addUser)
   .listen(app.get('port'), function() {
@@ -237,6 +235,10 @@ function addDessertToDb(req, callback){
 
 function addComment(req, res) {
     console.log("creating a new user");
+
+    res.writeHead(302, {
+        'Location' : '/main.html'
+      });
   
     var name = req.body.name;
     var rating = req.body.rating;
