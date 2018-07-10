@@ -86,7 +86,7 @@ function getComment(req, response) {
 function getCommentFromDb(id, callback){
     console.log("Getting comment from DB with id: " + id);
 
-    var sql = "SELECT name, rating, comment, dessertid, id FROM comment WHERE dessertid = $1::int";
+    var sql = "SELECT name, rating, comment, dessertid, id FROM comment WHERE id = $1::int";
 
     var params = [id];
 
