@@ -34,7 +34,7 @@
             newItem.appendChild(text);
     
             newItem.innerHTML = "<div class='container'> <div class='box'><h2>" + json.name + "</h2><br>" 
-                  + "Description: " + json.description + "<br>"
+                  + "Description: " + json.description + "<br><p id='comments" + id +"'></p>"
                   + "<button class='submit' onclick='getDetails'>Add Comment</button> </div></div>"; 
                   //+ <img src='" + json.image + "' ><br>"; 
              result.appendChild(newItem);
@@ -46,7 +46,7 @@
             httpRequest.onreadystatechange = function() {
                 if(this.readyState === 4 && this.status === 200) {
                     var newObj = JSON.parse(httpRequest.responseText);
-                    displayComments(newObj);
+                    displayComments(newObj, id);
 
                 }
             };
@@ -55,9 +55,9 @@
             console.log("Comment for:" + id);
         }
 
-        function displayComments(json){
+        function displayComments(json, id){
             console.log(json);
-            var details = document.getElementById("details");
+            var details = document.getElementById("comment" + id);
 
 
             details.innerHTML +=  json;
