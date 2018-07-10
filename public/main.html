@@ -61,9 +61,9 @@
 
             for(var i= 0; i < json.length; i++)
             {
-                details.innerHTML +=  "<h2>" + json.name + "</h2>" 
-                 + "<p>" + json.rating + " stars <br>" + json.displayComments
-                 + "<br>" + json.comment + "<br><br>";
+                details.innerHTML +=  "<h2>" + json[i].name + "</h2>" 
+                 + "<p>" + json[i].rating + " stars <br>" 
+                 + "<br>" + json[i].comment + "<br><br>";
             }
           
 
