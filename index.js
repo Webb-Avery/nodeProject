@@ -21,6 +21,9 @@ app.set('port', (process.env.PORT || 5000))
   .post('/addComment', addComment)
    .get('/getComment', function(req, res) {
       getComment(req, res);
+      res.writeHead(302, {
+        'Location' : '/main.html'
+      });
     })  
   .post('/addUser', addUser)
   .listen(app.get('port'), function() {
