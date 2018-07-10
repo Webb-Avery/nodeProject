@@ -30,10 +30,10 @@
             
             newItem.appendChild(text);
     
-            newItem.innerHTML = json.name + "<br>" 
+            newItem.innerHTML = "<div class='container'> <div class='box'>" + json.name + "<br>" 
                   + "Description: " + json.description + "<br>"
-                  + "<button onclick='getDetails'>Add Comment</button> "; 
-                  //+ "Poster: <img src='" + json.Poster + "' ><br>"; 
+                  + "<button class='submit' onclick='getDetails'>Add Comment</button> </div></div>"; 
+                  //+ <img src='" + json.image + "' ><br>"; 
              result.appendChild(newItem);
         }
 
