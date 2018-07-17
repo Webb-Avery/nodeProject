@@ -24,7 +24,7 @@ img {
 }
 
 .displayRight {
-    display: inline;
+    display: inline-block;
 }
 .desc {
     width: 100%;
