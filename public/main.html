@@ -63,11 +63,18 @@
         function displayComments(json, id){
             console.log(json);
             var details = document.getElementById("comments" + id);
-
+            var username = "";
             for(var i= 0; i < json.length; i++)
             {
+                username = json[i].username;
+                if (username == "null") 
+                {
+                    username = "Anonymous";
+                }
+
+
                 details.innerHTML +=  "<h3>" + json[i].name + "</h3>" 
-                 + "<p>User: " + json[i].username + "</p>"
+                 + "<p>User: " + username + "</p>"
                  + "<p>" + json[i].rating + " stars <br>" 
                  + "<br>" + json[i].comment + "</p><br>";
             }
