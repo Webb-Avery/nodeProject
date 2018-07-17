@@ -33,8 +33,8 @@
             
             newItem.appendChild(text);
     
-            newItem.innerHTML = "<div class='container'> <div class='box'><h2>" + json.name + "</h2><br>" 
-                  + "Description: " + json.description + "<br><img src='/lemon.jpg'><div class='box' id='comments" + id + "'></div>"
+            newItem.innerHTML = "<div class='container'> <div class='box'><h2>" + json.name + "</h2><br><img src='/lemon.jpg'>" 
+                  + "Description: " + json.description + "<br><br><div class='box' id='comments" + id + "'></div>"
                   +  "<form method='POST' action='/addComment'><h2> Add Comment  </h2>" 
                   +  "<label> Name: </label><input type='text' name='name'></input><br />"
                   +  "<label> Rating: </label><select name='rating'><option value='1'>1 Star</option><option value='2'>2 Star</option>"
