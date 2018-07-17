@@ -12,8 +12,8 @@ h1 {
 }
 
 img {
-    width: 40%;
-    align-content: initial;
+    width: 60%;
+    align-content: inherit;
 }
 
 input[type=text], input[type=password], select {
