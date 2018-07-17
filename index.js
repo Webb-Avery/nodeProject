@@ -144,7 +144,7 @@ function getCommentFromDb(id, callback){
 }
 
 function getUser(req, response) {
-  
+  console.log("trying to get user");
     getUserFromDb(req, function(error, result) {
         if (error || result == null || result.length != 1) {
            response.status(500).json({success: false, message:'Username/Password incorrect'}); 
