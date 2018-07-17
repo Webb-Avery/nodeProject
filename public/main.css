@@ -56,6 +56,18 @@ input[type=text], input[type=password], select {
     width: 100%;
 }
 
+.submit2 {
+    background-color: lightseagreen;
+    color: white;
+    align-content: center;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-decoration: none;
+    
+}
 .submit:hover {
     opacity: 0.8;
 }
