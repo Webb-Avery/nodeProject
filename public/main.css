@@ -20,6 +20,7 @@ img {
     width: 40%;
     float: left;
     display: inline-block;
+    padding-right: 5%;
 }
 
 .displayRight {
