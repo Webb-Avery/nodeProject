@@ -18,6 +18,7 @@ h2 {
 
 img {
     width: 40%;
+    float: left;
     display: inline-block;
 }
 
