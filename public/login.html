@@ -2,12 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="main.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-	<script src="test.js"></script>
+ 
 <title>Login</title>
 </head>
 
@@ -18,22 +13,23 @@
 <br>
 <div class="container">  
    <div class="box">
+    <form method="post" action="/login">
          <h2>Login</h2>
 
         <label> Username: </label>
-        <input type="text" id="loginusername" name="username"></input>
+        <input type="text" id="username" name="username"></input>
         <br />
             
         <label> Password: </label>
-        <input type="password" id="loginpassword" name="password"></input>
+        <input type="password" id="password" name="password"></input>
         <br />
-        <input class="submit" type="submit" value="Login">
-	    <button onclick="login();">Log in</button>
-	<br>
+        <input class="submit" type="submit">Login</input>
+        
+    </form>
+        
+ 
 </div>
 </div>
-
-<div id="status"></div>
 <br /> <br>
     <div class="container">
         <form class="box" method="post" action="/addUser">
