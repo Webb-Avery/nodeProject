@@ -59,8 +59,9 @@ app.set('port', (process.env.PORT || 5000))
       getUser(req, res);
  })
   .post('/addDessert', addDessert)
-  .post('/addComment', function(req, res, next) {
+  .post('/addComment', function(req, res) {
       addComment(req,res);
+      return res.redirect('/main.html');
   })
   .get('/getComment', function(req, res) {
       getComment(req, res);
@@ -317,6 +318,7 @@ function addCommentToDb(req, callback){
     var rating = req.body.rating;
     var comment = req.body.comment;
     var dessertId = req.body.dessertId;
+    var username = "Anonymous";
     if(req.session.user != "") {
         username = req.session.user;
     }
