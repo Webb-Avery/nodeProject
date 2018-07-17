@@ -65,7 +65,6 @@ input[type=text], input[type=password], select {
     border: none;
     cursor: pointer;
     text-decoration: none;
-    float: left;
 }
 .submit:hover {
     opacity: 0.8;
