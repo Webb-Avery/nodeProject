@@ -20,7 +20,7 @@ app.set('port', (process.env.PORT || 5000))
   .use(express.json())
   .use(logRequest)
   .use(express.urlencoded({extended:true}))
-  .post("/login", function(req,res) {
+  /*.post("/login", function(req,res) {
         var username = req.body.username;
         var password = req.body.password;
         console.log("Username: " + username + "  Password: " + password);
@@ -35,7 +35,7 @@ app.set('port', (process.env.PORT || 5000))
 
         } 
 
-  })
+  })*/
   .post("/logout", function(req,res) {
     if(req.session.user != "")
     {
