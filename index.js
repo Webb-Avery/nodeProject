@@ -1,7 +1,9 @@
 var express = require('express');
 var app = express();
+var session = require('express-session');
 
 const { Pool } = require("pg");
+
 
 const connectionString = process.env.DATABASE_URL || 'postgres://fzakqxbwdtrbnu:ebef537206b267f37df5a5809831aa91ea89d831e70ab9fe03d0109f8ef5edca@ec2-54-235-196-250.compute-1.amazonaws.com:5432/d9tvk4s60e5qbe';
 
@@ -9,14 +11,53 @@ const pool = new Pool({connectionString: connectionString});
 
 app.set('port', (process.env.PORT || 5000))
   .use(express.static(__dirname + '/public'))
+  .use(session({
+      name: "cookie-thing",
+      secret: "super",
+      saveUninitialized: true,
+      resave: true
+  }))
   .use(express.json())
+  .use(logRequest)
   .use(express.urlencoded({extended:true}))
+  .post("/login", function(req,res) {
+        var username = req.body.username;
+        var password = req.body.password;
+        console.log("Username: " + username + "  Password: " + password);
+        if(username == "admin" && password == "password"){
+            res.status(200).json(({success: true}));
+            console.log("success");
+            req.session.user = username;
+        }
+        else{
+            res.status(500).json({success: false});
+            console.log("fail");
+
+        } 
+
+  })
+  .post("/logout", function(req,res) {
+    if(req.session.user != "")
+    {
+        req.session.destroy();
+        res.status(200).json(({success: true}));
+    }
+    else{
+        res.status(200).json(({success: false}));
+    }
+
+})
+  .get('/getServerTime', verifyLogin, function(req, res) {
+      var Stime = new Date();
+      console.log(Stime);
+      res.status(200).json({success: true, time: Stime })
+  } )
   .get('/getDessert', function(req, res) {
         getDessert(req, res);
     })
-  .get('/login', function(req, res) {
+  .post('/login', function(req, res) {
       getUser(req, res);
-    })
+ })
   .post('/addDessert', addDessert)
   .post('/addComment', addComment)
    .get('/getComment', function(req, res) {
@@ -29,6 +70,17 @@ app.set('port', (process.env.PORT || 5000))
 });
 
 
+function logRequest(req, res, next) {
+    console.log("Received a request for: " + req.url );
+    next();
+}
+
+
+function verifyLogin(req, res, next) {
+    if(req.session.user != ""){
+        next();
+    }
+}
 
 function getDessert(req, response) {
     var id = req.query.id;
@@ -121,8 +173,8 @@ function getUser(req, response) {
 function getUserFromDb(req, callback){
   console.log("Getting user from DB with username: " + username);
 
-  var username = req.query.username;
-  var password = req.query.password;
+  var username = req.body.username;
+  var password = req.body.password;
 
   var sql = "SELECT id, username, password, firstname, lastname FROM users WHERE username = $1 and password = $2";
 
