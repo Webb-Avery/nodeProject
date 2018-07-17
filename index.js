@@ -61,7 +61,7 @@ app.set('port', (process.env.PORT || 5000))
   .post('/addDessert', addDessert)
   .post('/addComment', function(req, res) {
       addComment(req,res);
-      return res.redirect('/main.html');
+      
   })
   .get('/getComment', function(req, res) {
       getComment(req, res);
@@ -309,6 +309,8 @@ function addComment(req, res) {
       }
   
       });
+
+      return res.redirect('/main.html');
 }
 
 function addCommentToDb(req, callback){
@@ -329,7 +331,7 @@ function addCommentToDb(req, callback){
   
     var params = [name, rating, comment, dessertId, username];
   
-    pool.query(sql, params, function(err, result){
+   /* pool.query(sql, params, function(err, result){
         if (err){
             console.log("Error in query: ");
             console.log(err);
@@ -340,5 +342,6 @@ function addCommentToDb(req, callback){
   
         callback(null);
     });
-    
+    */ 
+   console.log(sql, params);
 }  
