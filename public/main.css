@@ -49,5 +49,5 @@ input[type=text], input[type=password], select {
 
 .container {
     padding: 16px;
-    width:60%;
+    width:100%;
 }
