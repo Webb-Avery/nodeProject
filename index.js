@@ -59,8 +59,10 @@ app.set('port', (process.env.PORT || 5000))
       getUser(req, res);
  })
   .post('/addDessert', addDessert)
-  .post('/addComment', addComment)
-   .get('/getComment', function(req, res) {
+  .post('/addComment', function(req, res, next) {
+      addComment(req,res);
+  })
+  .get('/getComment', function(req, res) {
       getComment(req, res);
 
     })  
@@ -315,10 +317,15 @@ function addCommentToDb(req, callback){
     var rating = req.body.rating;
     var comment = req.body.comment;
     var dessertId = req.body.dessertId;
-
-    var sql = "INSERT INTO comment(name, rating, comment, dessertid) VALUES($1, $2, $3, $4)";
+    if(req.session.user != "") {
+        username = req.session.user;
+    }
+    else{
+        username = "Anonymous";
+    }
+    var sql = "INSERT INTO comment(name, rating, comment, dessertid, username) VALUES($1, $2, $3, $4, $5)";
   
-    var params = [name, rating, comment, dessertId];
+    var params = [name, rating, comment, dessertId, username];
   
     pool.query(sql, params, function(err, result){
         if (err){
