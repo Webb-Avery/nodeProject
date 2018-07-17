@@ -11,6 +11,11 @@ h1 {
   padding: 3% 20%;
 }
 
+img {
+    width: 40%;
+    align-content: initial;
+}
+
 input[type=text], input[type=password], select {
     width: 100%;
     padding: 12px 20px;
