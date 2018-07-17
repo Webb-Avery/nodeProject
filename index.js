@@ -301,17 +301,10 @@ function addComment(req, res) {
     var dessertId = req.body.dessertId;
 
     addCommentToDb(req, function(error) {
-      if (error) {
-         res.status(500).json({success: false}); 
-      } else {
-          res.status(200).json({success:true, Name: name, Rating:rating, Comment:comment, Username: username});
-  
-      }
-  
+        
       });
-
       return res.redirect('/main.html');
-}
+    }
 
 function addCommentToDb(req, callback){
     console.log("Getting dessert from DB");
