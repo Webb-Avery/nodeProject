@@ -101,7 +101,7 @@ function getDessert(req, response) {
 function getDessertFromDb(id, callback){
     console.log("Getting dessert from DB with id: " + id);
 
-    var sql = "SELECT id, name, description FROM dessert WHERE id = $1::int";
+    var sql = "SELECT id, name, description, picture FROM dessert WHERE id = $1::int";
 
     var params = [id];
 
