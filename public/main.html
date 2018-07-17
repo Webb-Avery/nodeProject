@@ -34,7 +34,7 @@
     
             newItem.innerHTML = "<div class='container'> <div class='box'><h2>" + json.name + "</h2><div class='displayRight'><img src='" + json.picture + "'><p class='desc'>" 
                   + json.description + "</p><br><br></div><h2>Comments</h2><div class='box' id='comments" + id + "'></div>"
-                  +  "<form method='POST' action='/addComment'><h2> Add Comment  </h2>" 
+                  +  "<form method='POST' action='addComments()'><h2> Add Comment  </h2>" 
                   +  "<label> Title: </label><input type='text' name='name'></input><br />"
                   +  "<label> Rating: </label><select name='rating'><option value='1'>1 Star</option><option value='2'>2 Star</option>"
                   +  "<option value='3'>3 Star</option><option value='4'>4 Star</option><option value='5'>5 Star</option></select><br />"
@@ -65,12 +65,23 @@
             for(var i= 0; i < json.length; i++)
             {
                 details.innerHTML +=  "<h3>" + json[i].name + "</h3>" 
-                 + "<p>" + json[i].username + "</p>"
+                 + "<p>User: " + json[i].username + "</p>"
                  + "<p>" + json[i].rating + " stars <br>" 
                  + "<br>" + json[i].comment + "</p><br>";
             }
           
 
+        }
+
+        function addComment() {
+            $.post("/logout", function(result) {
+                    if (result && result.success) {
+                        $("#status").text("Successfully logged out.");
+                    } else {
+                        $("#status").text("Error logging out.");
+                }
+            }
+        );
         }
 
 
