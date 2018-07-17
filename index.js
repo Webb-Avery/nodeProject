@@ -151,7 +151,7 @@ function getUser(req, response) {
            response.status(500).json({success: false, message:'Username/Password incorrect'}); 
         } else {
             req.session.user = username;
-            return res.redirect('/main.html');
+            return response.redirect('/main.html');
         }
   
     });
