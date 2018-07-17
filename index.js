@@ -158,7 +158,7 @@ function getUser(req, response) {
 }
 
 function getUserFromDb(req, callback){
-  console.log("Getting user from DB with username: " + loginusername);
+  console.log("Getting user from DB with username: " + username);
 
   var username = req.body.username;
   var password = req.body.password;
