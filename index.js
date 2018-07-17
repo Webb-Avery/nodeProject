@@ -140,7 +140,7 @@ function getComment(req, response) {
 function getCommentFromDb(id, callback){
     console.log("Getting comment from DB with id: " + id);
 
-    var sql = "SELECT name, rating, comment, dessertid, id FROM comment WHERE dessertid = $1::int";
+    var sql = "SELECT name, rating, comment, dessertid, id, username FROM comment WHERE dessertid = $1::int";
 
     var params = [id];
 
@@ -303,7 +303,7 @@ function addComment(req, res) {
       if (error) {
          res.status(500).json({success: false}); 
       } else {
-          res.status(200).json({success:true, Name: name, Rating:rating, Comment:comment});
+          res.status(200).json({success:true, Name: name, Rating:rating, Comment:comment, Username: username});
   
       }
   
