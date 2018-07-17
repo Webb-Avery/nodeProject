@@ -247,6 +247,7 @@ function addDessert(req, res) {
   
     var name = req.body.name;
     var description = req.body.description;
+    var picture = req.body.picture;
 
     addDessertToDb(req, function(error) {
       if (error) {
@@ -265,10 +266,11 @@ function addDessertToDb(req, callback){
 
     var name = req.body.name;
     var description = req.body.description;
+    var picture = req.body.picture;
 
-    var sql = "INSERT INTO dessert(name, description) VALUES($1, $2)";
+    var sql = "INSERT INTO dessert(name, description, picture) VALUES($1, $2, $3)";
   
-    var params = [name, description];
+    var params = [name, description, picture];
   
     pool.query(sql, params, function(err, result){
         if (err){
