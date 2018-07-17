@@ -21,19 +21,7 @@ app.set('port', (process.env.PORT || 5000))
   .use(logRequest)
   .use(express.urlencoded({extended:true}))
   .post("/login", function(req,res) {
-        var username = req.body.username;
-        var password = req.body.password;
-        console.log("Username: " + username + "  Password: " + password);
-        if(username == "admin" && password == "password"){
-            res.status(200).json(({success: true}));
-            console.log("success");
-            req.session.user = username;
-        }
-        else{
-            res.status(500).json({success: false});
-            console.log("fail");
-
-        } 
+    getUser(req, res);
 
   })
   .post("/logout", function(req,res) {
@@ -55,9 +43,6 @@ app.set('port', (process.env.PORT || 5000))
   .get('/getDessert', function(req, res) {
         getDessert(req, res);
     })
-  .post('/login', function(req, res) {
-      getUser(req, res);
- })
   .post('/addDessert', addDessert)
   .post('/addComment', addComment)
    .get('/getComment', function(req, res) {
