@@ -13,13 +13,15 @@ h1 {
 
 img {
     width: 40%;
-    display: block;
+    float: left;
+    margin-left:2%;
+
 }
 
 .desc {
-    text-align: left;
+    widows: 100%;
+    padding:1%;
     font-size: 22px;
-    display: inline;    
 
 }
 
