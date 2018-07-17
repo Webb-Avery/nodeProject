@@ -20,22 +20,6 @@ app.set('port', (process.env.PORT || 5000))
   .use(express.json())
   .use(logRequest)
   .use(express.urlencoded({extended:true}))
-  .post("/login", function(req,res) {
-        var username = req.body.username;
-        var password = req.body.password;
-        console.log("Username: " + username + "  Password: " + password);
-        if(username == "admin" && password == "password"){
-            res.status(200).json(({success: true}));
-            console.log("success");
-            req.session.user = username;
-        }
-        else{
-            res.status(500).json({success: false});
-            console.log("fail");
-
-        } 
-
-  })
   .post("/logout", function(req,res) {
     if(req.session.user != "")
     {
@@ -165,11 +149,12 @@ function getUser(req, response) {
         if (error || result == null || result.length != 1) {
            response.status(500).json({success: false, message:'Username/Password incorrect'}); 
         } else {
-            var person = result[0];
-            response.status(200).json(result[0]);    
+            req.session.user = username;
+            return res.redirect('/main.html');
         }
   
     });
+  
   
 }
 
@@ -209,7 +194,8 @@ function addUser(req, res) {
       if (error) {
          res.status(500).json({success: false}); 
       } else {
-          res.status(200).json({success:true, first: firstname, lastname: lastname, user: username, password:password});
+        req.session.user = username;
+        return res.redirect('/main.html');
   
       }
   
