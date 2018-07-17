@@ -60,13 +60,15 @@ input[type=text], input[type=password], select {
     background-color: lightseagreen;
     color: white;
     align-content: center;
-    align-self: center;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 100%;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center 
     
 }
 .submit:hover {
