@@ -12,8 +12,15 @@ h1 {
 }
 
 img {
-    width: 60%;
+    width: 40%;
     align-content: inherit;
+}
+
+.desc {
+    text-align: left;
+    font-size: 22;
+    display: inline;    
+
 }
 
 input[type=text], input[type=password], select {
