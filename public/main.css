@@ -21,7 +21,7 @@ img {
 
 .desc {
     width: 100%;
-    
+
     font-size: 22px;
 
 }
@@ -51,4 +51,5 @@ input[type=text], input[type=password], select {
 .container {
     padding: 16px;
     width:60%;
+    display: block;
 }
