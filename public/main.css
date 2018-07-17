@@ -13,12 +13,12 @@ h1 {
 
 img {
     width: 40%;
-    align-content: inherit;
+    display: block;
 }
 
 .desc {
     text-align: left;
-    font-size: 22;
+    font-size: 22px;
     display: inline;    
 
 }
