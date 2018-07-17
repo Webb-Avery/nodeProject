@@ -20,7 +20,7 @@ app.set('port', (process.env.PORT || 5000))
   .use(express.json())
   .use(logRequest)
   .use(express.urlencoded({extended:true}))
-  .post("/login", function(req,res) {
+/*  .post("/login", function(req,res) {
         var username = req.body.username;
         var password = req.body.password;
         console.log("Username: " + username + "  Password: " + password);
@@ -35,7 +35,7 @@ app.set('port', (process.env.PORT || 5000))
 
         } 
 
-  })
+  })*/
   .post("/logout", function(req,res) {
     if(req.session.user != "")
     {
@@ -55,9 +55,9 @@ app.set('port', (process.env.PORT || 5000))
   .get('/getDessert', function(req, res) {
         getDessert(req, res);
     })
-  //.post('/login', function(req, res) {
-    //  getUser(req, res);
-// })
+  .post('/login', function(req, res) {
+      getUser(req, res);
+ })
   .post('/addDessert', addDessert)
   .post('/addComment', addComment)
    .get('/getComment', function(req, res) {
@@ -160,10 +160,12 @@ function getUser(req, response) {
   
     getUserFromDb(req, function(error, result) {
         if (error || result == null || result.length != 1) {
-           response.status(500).json({success: false, message:'Username/Password incorrect'}); 
+           response.status(500).json({success: false, message:'Username/Password incorrect'});
+           console.log("fail"); 
         } else {
-            var person = result[0];
-            response.status(200).json(result[0]);    
+            res.status(200).json(({success: true}));
+            console.log("success");
+            req.session.user = username;    
         }
   
     });
