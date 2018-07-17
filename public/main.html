@@ -50,7 +50,7 @@
                   +  "<label> Rating: </label><select name='rating'><option value='1'>1 Star</option><option value='2'>2 Star</option>"
                   +  "<option value='3'>3 Star</option><option value='4'>4 Star</option><option value='5'>5 Star</option></select><br />"
                   +  "<label> Comment: </label><input type='text' name='comment'></input><br />"
-                  +  "<input type='hidden' name='dessertId' value='" + id + "'></input><br /><input class='btn btn-primary btn-lg btn-block' type='submit' value='Add comment'></form>"; 
+                  +  "<input type='hidden' name='dessertId' value='" + id + "'></input><br /><input class='btn btn-info btn-lg btn-block' type='submit' value='Add comment'></form>"; 
              result.appendChild(newItem);
         }
 
@@ -97,7 +97,7 @@
 </head>
 <body onload="inputDesserts()">
     <h1>Desserts</h1>
-    <a class="submit2" href="login.html">Login/ Sign Up </a>
+    <a class="btn btn-info" href="login.html">Login/ Sign Up </a>
 
     <p id="results"></p>
     <p id="details"></p>

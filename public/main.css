@@ -79,9 +79,3 @@ input[type=text], input[type=password], select {
     padding: 16px;
     width:90%;
 }
-
-.btn-primary {
-    color: #fff;
-    background-color: lightseagreen;
-    border-color:lightseagreen;
-}
