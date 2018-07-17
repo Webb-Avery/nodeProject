@@ -81,5 +81,7 @@ input[type=text], input[type=password], select {
 }
 
 .btn-primary {
+    color: #fff;
     background-color: lightseagreen;
+    border-color:lightseagreen;
 }
