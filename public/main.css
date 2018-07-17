@@ -6,6 +6,7 @@ body {
 h1 {
     text-align: center;
 }
+
 .box {
   border: 3px solid #f1f1f1;
   padding: 3% 20%;
@@ -14,14 +15,14 @@ h1 {
 img {
     width: 40%;
     float: left;
-    margin-left:2%;
-    display: block;
 
 }
 
 .desc {
     width: 100%;
     font-size: 22px;
+    margin-left: 5%;
+    display: inherit;
 
 }
 
