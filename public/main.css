@@ -14,15 +14,15 @@ h1 {
 
 img {
     width: 40%;
-    
-
+    float: left;
+    display: inline-block;
 }
 
 .desc {
     width: 100%;
     font-size: 22px;
     margin-left: 5%;
-    display: inherit;
+    height: auto;
 
 }
 
