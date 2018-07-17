@@ -22,6 +22,9 @@ img {
     display: inline-block;
 }
 
+.displayRight {
+    display: inline;
+}
 .desc {
     width: 100%;
     font-size: 22px;
