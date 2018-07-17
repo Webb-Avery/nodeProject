@@ -12,15 +12,16 @@ h1 {
 }
 
 img {
-    width: 40%;
+    width: 50%;
     float: left;
     margin-left:2%;
 
 }
 
 .desc {
-    widows: 100%;
-    padding:1%;
+    width: 100%;
+    height: 100%;
+    padding-left: 10%;
     font-size: 22px;
 
 }
