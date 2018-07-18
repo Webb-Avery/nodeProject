@@ -34,6 +34,19 @@
             httpRequest.send();
             console.log("Getting id:" + id);
         }
+
+        function addDessert(id) {
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = function() {
+                if(this.readyState === 4 && this.status === 200) {
+                    var newObj = JSON.parse(httpRequest.responseText);
+                }
+            };
+            httpRequest.open("GET", '/getUser', true);
+            httpRequest.send();
+            console.log(newObj.user);
+        }
+
         function addResults(json, id) {
             console.log(json);
 

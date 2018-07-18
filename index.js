@@ -51,6 +51,12 @@ app.set('port', (process.env.PORT || 5000))
       getComment(req, res);
 
     })  
+    .get('/getUser'), function(req, res) {
+        username = req.session.user;
+        res.status(500).json({user: username});
+        
+           
+    }
   .post('/addUser', addUser)
   .listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
@@ -148,7 +154,8 @@ function getUser(req, response) {
   var username = req.body.username;
     getUserFromDb(req, function(error, result) {
         if (error || result == null || result.length != 1) {
-           response.status(500).json({success: false, message:'Username/Password incorrect'}); 
+           response.status(500).json({success: false, message:'Username/Password incorrect'});
+           return response.redirect('/main.html'); 
         } else {
             req.session.user = username;
             return response.redirect('/main.html');
@@ -193,6 +200,7 @@ function addUser(req, res) {
     addUserToDb(req, function(error) {
       if (error) {
          res.status(500).json({success: false}); 
+         return res.redirect('/main.html');
       } else {
         req.session.user = username;
         return res.redirect('/main.html');
