@@ -12,6 +12,11 @@ h2 {
     font-size: 22px;
 }
 
+label {
+    padding: 5%;
+    font-size: 18px;
+}
+
 
 .box {
   border: 3px solid #17a2b8;
