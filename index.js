@@ -53,7 +53,7 @@ app.set('port', (process.env.PORT || 5000))
     })  
     .get('/getUser', function(req, res) {
         username = req.session.user;
-        res.status(500).json({user: username});
+        res.status(200).json({user: username});
         
            
     })
