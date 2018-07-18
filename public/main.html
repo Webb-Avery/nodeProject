@@ -40,7 +40,12 @@
             httpRequest.onreadystatechange = function() {
                 if(this.readyState === 4 && this.status === 200) {
                     var newObj = JSON.parse(httpRequest.responseText);
-                    console.log(newObj.user);   
+                    console.log(newObj.user);
+                    if(newObj.user != null) {
+
+                    var user = document.getElementById('user');   
+                    user.innerHTML =  "Welcome, " + newObj.user ;
+                    }
                 }
             };
             httpRequest.open("GET", '/getUser', true);
@@ -114,6 +119,7 @@
 <body onload="inputDesserts()">
     <h1>Desserts</h1>
     <a class="submit2" href="login.html">Login/ Sign Up </a>
+    <h1 id="user" ></h1>
 
     <p id="results"></p>
     <p id="details"></p>
