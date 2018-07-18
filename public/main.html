@@ -46,10 +46,10 @@
             newItem.innerHTML = "<div class='dessertbox'><h2>" + json.name + "</h2><div class='displayRight'><img src='" + json.picture + "'><p class='desc'>" 
                   + json.description + "</p><br><br></div><br><h2>Comments</h2><div class='box' id='comments" + id + "'></div>"
                   +  "<form  method='POST' action='/addComment'><br><h2> Add Comment</h2>" 
-                  +  "<div class='form-group row'><label class='col-sm-10 col-form-label'> Title: </label><div class='col-sm-10'><input class='form-control' type='text' name='name'></input></div></div>"
-                  +  "<label> Rating: </label><select name='rating'><option value='1'>1 Star</option><option value='2'>2 Star</option>"
+                  +  "<div class='form-group row'><label class='col-sm-2 col-form-label'> Title: </label><div class='col-sm-2'><input class='form-control' type='text' name='name'></input></div></div>"
+                  +  "<label class='col-sm-2 col-form-label'> Rating: </label><select class='col-sm-2' name='rating'><option value='1'>1 Star</option><option value='2'>2 Star</option>"
                   +  "<option value='3'>3 Star</option><option value='4'>4 Star</option><option value='5'>5 Star</option></select><br />"
-                  +  "<label> Comment: </label><input type='text' name='comment'></input><br />"
+                  +  "<label class='col-sm-2 col-form-label'> Comment: </label><input class='col-sm-2' type='text' name='comment'></input><br />"
                   +  "<input type='hidden' name='dessertId' value='" + id + "'></input><br /><input class='btn btn-info btn-lg btn-block' type='submit' value='Add comment'></form>"; 
              result.appendChild(newItem);
         }
