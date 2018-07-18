@@ -13,12 +13,15 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
     <script>
         function inputDesserts() {
+            getUser();
             for (var i = 5; i< 10; i++){
                 addDessert(i);
             }
             for (var i = 5; i< 10; i++){
                 getComments(i);
             }
+
+
         }
 
         function addDessert(id) {
@@ -123,7 +126,6 @@
 
     <p id="results"></p>
     <p id="details"></p>
-    <button onclick="getUser()">GetUSER</button>
 
 
 </body>
